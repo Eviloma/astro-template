@@ -1,0 +1,101 @@
+---
+import { G_ANALYTICS_TAG, G_TAG_MANAGER } from "astro:env/server";
+import { ClientRouter } from "astro:transitions";
+import { GoogleTagmanager } from "@digi4care/astro-google-tagmanager";
+import { GoogleAnalytics } from "astro-analytics";
+import { AstroFont } from "astro-font";
+import { SEO } from "astro-seo";
+import ProgressBar from "astro-vtbot/components/ProgressBar.astro";
+
+interface Props {
+  seo?: {
+    title?: string;
+    description?: string;
+  };
+}
+
+const { seo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <ClientRouter />
+    <ProgressBar />
+    <SEO
+      title={seo?.title}
+      titleTemplate="%s | Astro Boilerplate"
+      titleDefault="Astro Boilerplate"
+      charset="UTF-8"
+      description={seo?.description}
+      canonical={`${import.meta.env.BASE_URL}${Astro.url.pathname}`}
+      openGraph={{
+        basic: {
+          title: seo?.title
+            ? `${seo?.title} | Astro Boilerplate`
+            : "Astro Boilerplate",
+          type: "website",
+          image: "/card.png",
+          url: `${import.meta.env.BASE_URL}${Astro.url.pathname}`,
+        },
+        optional: {
+          description: seo?.description,
+          locale: Astro.currentLocale,
+          siteName: "Astro Boilerplate",
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "Astro Boilerplate",
+        title: seo?.title
+          ? `${seo?.title} | Astro Boilerplate`
+          : "Astro Boilerplate",
+        description: seo?.description,
+        image: "/card.png",
+      }}
+      extend={{
+        meta: [
+          {
+            name: "viewport",
+            property: "width=device-width",
+          },
+          {
+            name: "generator",
+            property: Astro.generator,
+          },
+        ],
+        link: [
+          {
+            rel: "sitemap",
+            href: "/sitemap-index.xml",
+          },
+        ],
+      }}
+    />
+    <AstroFont
+      config={[
+        {
+          src: [],
+          name: "Raleway",
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap",
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
+    {G_ANALYTICS_TAG && <GoogleAnalytics id={G_ANALYTICS_TAG} />}
+    {G_TAG_MANAGER && <GoogleTagmanager id={G_TAG_MANAGER} />}
+  </head>
+  <body class="min-h-dvh">
+    <div class="flex-1">
+      <!-- Header -->
+      <main>
+        <slot />
+      </main>
+    </div>
+    <!-- Footer -->
+  </body>
+</html>
