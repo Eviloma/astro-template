@@ -18,4 +18,4 @@ This is a boilerplate project for Astro.js, designed to provide a quick start fo
 
 ## Getting Started
 
-`bunx create-astro-app -e https://github.com/Eviloma/boilerplates/tree/master/astro`
+`bun create astro -- --template Eviloma/astro-template`
