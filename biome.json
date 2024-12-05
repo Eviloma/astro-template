@@ -17,8 +17,7 @@
         "noUnusedImports": "error",
         "noUnusedPrivateClassMembers": "error",
         "noUnusedFunctionParameters": "error",
-        "noUnusedVariables": "error",
-        "useHookAtTopLevel": "warn"
+        "noUnusedVariables": "error"
       },
       "nursery": {
         "noDuplicateElseIf": "warn",
