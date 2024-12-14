@@ -22,7 +22,7 @@
     "astro-analytics": "^2.7.0",
     "astro-compressor": "^1.0.0",
     "astro-devtool-breakpoints": "^0.3.0",
-    "astro-favicons": "^2.1.8",
+    "astro-favicons": "^3.0.0",
     "astro-font": "^0.1.81",
     "astro-healthcheck-ts": "^1.0.2",
     "astro-icon": "^1.1.4",
