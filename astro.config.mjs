@@ -37,10 +37,8 @@ export default defineConfig({
     }),
     mailObfuscation(),
     favicons({
-      appName: "Astro Boilerplate",
-      appShortName: "Astro",
-      appDescription: "Astro Boilerplate",
-      faviconsDarkMode: false,
+      name: "Astro Boilerplate",
+      short_name: "Astro",
     }),
     devtoolBreakpoints(),
     metaTags(),
