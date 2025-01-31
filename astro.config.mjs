@@ -4,7 +4,6 @@ import { defineConfig, envField } from "astro/config";
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import playformCompress from "@playform/compress";
 import compressor from "astro-compressor";
 import devtoolBreakpoints from "astro-devtool-breakpoints";
@@ -17,16 +16,18 @@ import metaTags from "astro-meta-tags";
 import robotsTxt from "astro-robots-txt";
 import vtbot from "astro-vtbot";
 
+import tailwindcss from "@tailwindcss/vite";
+
 // https://astro.build/config
 export default defineConfig({
   site: "http://localhost:4321",
   output: "server",
+
   adapter: node({
     mode: "standalone",
   }),
 
   integrations: [
-    tailwind(),
     react(),
     sitemap(),
     lenis(),
@@ -61,5 +62,9 @@ export default defineConfig({
         optional: true,
       }),
     },
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
